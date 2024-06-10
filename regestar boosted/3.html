@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+</head>
+<body>
+    <div class="container">
+        <p>Hello <strong id="firstPartOfEmail"></strong></p>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const firstPartOfEmail = urlParams.get('firstPartOfEmail');
+            document.getElementById('firstPartOfEmail').textContent = firstPartOfEmail;
+        });
+    </script>
+</body>
+</html>
