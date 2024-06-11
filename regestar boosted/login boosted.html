@@ -82,7 +82,7 @@
             
             const email = document.getElementById('exampleInputEmail1').value;
             const password = document.getElementById('exampleInputPassword1').value;
-            const formData = JSON.parse(localStorage.getItem('formData'));
+            const formData = JSON.parse(sessionStorage.getItem('formData'));
 
             if (formData && email === formData.email && password === formData.password) {
                 const firstPartOfEmail = email.split('@')[0];
