@@ -3,18 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+    <link href="https://cdn.jsdelivr.net/npm/boosted@5.3.3/dist/css/boosted.min.css" rel="stylesheet" integrity="sha384-laZ3JUZ5Ln2YqhfBvadDpNyBo7w5qmWaRnnXuRwNhJeTEFuSdGbzl4ZGHAEnTozR" crossorigin="anonymous">
+    <title>Another Page</title>
 </head>
 <body>
-    <div class="container">
-        <p>Hello <strong id="firstPartOfEmail"></strong></p>
+    <div class="container" id="content">
+        <p>hello<strong id="firstPartOfEmail"></strong></p>
+        <button id="logoutButton" class="btn btn-primary">Logout</button>
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const urlParams = new URLSearchParams(window.location.search);
             const firstPartOfEmail = urlParams.get('firstPartOfEmail');
-            document.getElementById('firstPartOfEmail').textContent = firstPartOfEmail;
+
+            if (firstPartOfEmail) {
+                document.getElementById('firstPartOfEmail').textContent = firstPartOfEmail;
+            } else {
+                document.getElementById('content').innerHTML = '<p class="h1 text-center">hello</p>';
+            }
+
+            document.getElementById('logoutButton').addEventListener('click', function() {
+                // حذف القيم من localStorage و sessionStorage
+                localStorage.removeItem('formData');
+                sessionStorage.removeItem('formData');
+                sessionStorage.removeItem('firstPartOfEmail');
+
+                // تحديث المحتوى لعرض "hello"
+                document.getElementById('content').innerHTML = '<p class="h1 text-center">hello</p>';
+            });
         });
     </script>
 </body>
 </html>
+
